@@ -9,8 +9,8 @@ class UserController extends Controller
     public function index(){
         $data =[
            'level_id'=>2,
-           'username'=>'manager-dua',
-           'nama'=>'Manager 2',
+           'username'=>'manager-tiga',
+           'nama'=>'Manager 3',
            'password'=> Hash::make('12345')
         ];
 
