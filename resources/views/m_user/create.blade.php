@@ -6,8 +6,8 @@
 <h2>Membuat Daftar User</h2>
 </div>
 <div class="float-right">
-{{-- <a class="btn btn-secondary" href="{{ route('m_user.index') }}">
-Kembali</a> --}}
+<a class="btn btn-secondary" href="{{ route('m_user.index') }}">
+Kembali</a>
 </div>
 </div>
 </div>
@@ -21,7 +21,7 @@ Kembali</a> --}}
 </ul>
 </div>
 @endif
-<form action="" method="POST">
+<form action="{{ route('m_user.store') }}" method="POST">
 @csrf
 <div class="col-xs-12 col-sm-12 col-md-12">
 <div class="form-group">
