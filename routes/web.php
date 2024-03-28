@@ -34,3 +34,9 @@ Route::get('/kategori/create',[KategoriController::class, 'create'])->name('Tamb
 Route::get('/kategori/edit/{id}', [KategoriController::class, 'edit'])->name('EditKategori');
 Route::put('/kategori/update/{id}', [KategoriController::class, 'update'])->name('UpdateKategori');
 Route::get('/kategori/delete/{id}', [KategoriController::class, 'delete'])->name('DeleteKategori');
+
+Route::get('/m_user/create', function () {return view('m_user.create'); });
+
+Route::get('/kategori/create', [KategoriController::class,'create']);
+Route::post('/kategori', [KategoriController::class, 'store']);
+

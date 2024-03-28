@@ -371,6 +371,12 @@ return [
                 ],
             ],
         ],
+        ['header' => 'Kategori'],
+        [
+            'text' => 'Manage Kategori',
+            'url' => 'kategori',
+            'icon' => 'fas fa-fw fa-user',
+        ],
         ['header' => 'labels'],
         [
             'text' => 'important',
