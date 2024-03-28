@@ -6,8 +6,7 @@
 <h2>Membuat Daftar User</h2>
 </div>
 <div class="float-right">
-<a class="btn btn-secondary" href="{{ route('m_user.index') }}">
-Kembali</a>
+<a class="btn btn-secondary" href="{{ route('m_user.index') }}">Kembali</a>
 </div>
 </div>
 </div>
@@ -26,22 +25,19 @@ Kembali</a>
 <div class="col-xs-12 col-sm-12 col-md-12">
 <div class="form-group">
 <strong>Username:</strong>
-<input type="text" name="username" class="form-control"
-placeholder="Masukkan username"></input>
+<input type="text" name="username" class="form-control" placeholder="Masukkan username"></input>
 </div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-12">
 <div class="form-group">
 <strong>nama:</strong>
-<input type="text" name="nama" class="form-control"
-placeholder="Masukkan nama"></input>
+<input type="text" name="nama" class="form-control" placeholder="Masukkan nama"></input>
 </div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-12">
 <div class="form-group">
 <strong>Password:</strong>
-<input type="password" name="password" class="form-control"
-placeholder="Masukkan password"></input>
+<input type="password" name="password" class="form-control" placeholder="Masukkan password"></input>
 </div>
 </div>
 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
