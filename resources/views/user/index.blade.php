@@ -1,42 +1,68 @@
-@extends('adminlte::page')
-
-@section('title', 'Tambah User')
-
-@section('content_header')
-<h1>Tambah User</h1>
-@stop
-
+@extends('layouts.template')
 @section('content')
-<div class="card">
-    <div class="card-header">
-        <h3 class="card-title">Formulir Tambah User</h3>
-    </div>
-    <div class="card-body">
-        <form action="{{ route('user.store') }}" method="post">
-            @csrf
-            <div class="form-group">
-                <label for="nama">Nama Lengkap</label>
-                <input type="text" name="nama" class="form-control" id="nama" placeholder="Masukkan nama lengkap">
-            </div>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" name="username" class="form-control" id="username" placeholder="Masukkan username">
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" class="form-control" id="password" placeholder="Masukkan password">
-            </div>
-            <div class="form-group">
-                <label for="level_id">Level</label>
-                <select name="level_id" class="form-control" id="level_id">
-                    @foreach ($levels as $level)
-                        <option value="{{ $level->id }}">{{ $level->nama }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Simpan</button>
-        </form>
-    </div>
+<div class="card card-outline card-primary">
+<div class="card-header">
+<h3 class="card-title">{{ $page->title }}</h3>
+<div class="card-tools">
+<a class="btn btn-sm btn-primary mt-1" href="{{ url('user/create')}}">Tambah</a>
 </div>
-@stop
-
+</div>
+<div class="card-body">
+    @if (session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+    @if(session('error'))
+    <div class="alert alert-danger">{{ session('error') }}</div>
+    @endif
+<table class="table table-bordered table-striped table-hover table-sm"id="table_user">
+<thead>
+<tr><th>ID</th><th>Username</th><th>Nama</th><th>Level Pengguna</th><th>Aksi</th></tr>
+</thead>
+</table>
+</div>
+</div>
+@endsection
+@push('css')
+@endpush
+@push('js')
+<script>
+$(document).ready(function() {
+var dataUser = $('#table_user').DataTable({
+serverSide: true, // serverSide: true, jika ingin menggunakan serverside processing
+ajax: {
+"url": "{{ url('user/list') }}",
+"dataType": "json",
+"type": "POST"
+},
+columns: [
+{
+data: "DT_RowIndex", // nomor urut dari laravel datatableaddIndexColumn()
+className: "text-center",
+orderable: false,
+searchable: false
+},{
+data: "username",
+className: "",
+orderable: true, // orderable: true, jika ingin kolom ini bisadiurutkan
+searchable: true // searchable: true, jika ingin kolom ini bisadicari
+},{
+data: "nama",
+className: "",
+orderable: true, // orderable: true, jika ingin kolom ini bisadiurutkan
+searchable: true // searchable: true, jika ingin kolom ini bisadicari
+},{
+data: "level.level_nama",
+className: "",
+orderable: false, // orderable: true, jika ingin kolom ini bisadiurutkan
+searchable: false // searchable: true, jika ingin kolom ini bisadicari
+},{
+data: "aksi",
+className: "",
+orderable: false, // orderable: true, jika ingin kolom ini bisadiurutkan
+searchable: false // searchable: true, jika ingin kolom ini bisadicari
+}
+]
+});
+});
+</script>
+@endpush 
