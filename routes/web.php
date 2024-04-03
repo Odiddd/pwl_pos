@@ -1,8 +1,11 @@
 <?php
+
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\POSController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WelcomeController as ControllersWelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,4 +45,6 @@ Route::get('/kategori/create', [KategoriController::class,'create']);
 Route::post('/kategori', [KategoriController::class, 'store']);
 
 Route::resource('m_user', POSController::class);
+
+Route::get('/', [WelcomeController::class,'index']);
 
