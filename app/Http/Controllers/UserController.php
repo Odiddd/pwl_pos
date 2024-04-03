@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Illuminate\Database\QueryException;
 use App\Models\LevelModel;
 use App\Models\UserModel;
 use Illuminate\Http\Request;
@@ -62,6 +63,10 @@ class UserController extends Controller
     public function list(Request $request)
 {
 $users = UserModel::select('user_id', 'username', 'nama', 'level_id')->with('level');
+//Filter data user berdasarkan level id
+if($request->level_id){
+    $users->where('level_id', $request->level_id);
+}
 return DataTables::of($users)
 ->addIndexColumn() // menambahkan kolom index / no urut (default namakolom: DT_RowIndex)
 ->addColumn('aksi', function ($user) { // menambahkan kolom aksi
