@@ -16,6 +16,8 @@ class BarangModel extends Model
         'kategori_id', // Assuming a foreign key referencing KategoriModel
         'barang_kode',
         'barang_nama',
+        'harga_beli',
+        'harga_jual',
         // Add other relevant fields for your barang data
     ];
 
