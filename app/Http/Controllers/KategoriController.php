@@ -57,12 +57,12 @@ class kategoriController extends Controller
     }
     public function list(Request $request)
 {
-$kategori = KategoriModel::select('kategori_nama', 'kategori_kode');
+$kategoris = KategoriModel::select('kategori_nama', 'kategori_kode', 'kategori_id');
 //Filter data user berdasarkan level id
 if($request->kategori_nama){
-    $kategori->where('kategori_nama', $request->kategori_nama);
+    $kategoris->where('kategori_nama', $request->kategori_nama);
 }
-return DataTables::of($kategori)
+return DataTables::of($kategoris)
 ->addIndexColumn() // menambahkan kolom index / no urut (default namakolom: DT_RowIndex)
 ->addColumn('aksi', function ($kategori) { // menambahkan kolom aksi
 $btn = '<a href="'.url('/kategori/' . $kategori->kategori_id).'" class="btn btninfo btn-sm">Detail</a> ';

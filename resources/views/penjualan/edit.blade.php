@@ -13,23 +13,23 @@ Data yang Anda cari tidak ditemukan.
 </div>
 <a href="{{ url('penjualan') }}" class="btn btn-sm btn-default mt2">Kembali</a>
 @else
-<form method="POST" action="{{ url('/penjualan/'.$penjualan->penjualan_id) }}"class="form-horizontal">
+<form method="POST" action="{{ url('/penjualan/'.$penjualan->penjualan) }}"class="form-horizontal">
 @csrf
 {!! method_field('PUT') !!} 
-<div class="form-group row">
+{{-- <div class="form-group row">
 <label class="col-1 control-label col-form-label">penjualan</label>
 <div class="col-11">
-<select class="form-control" id="penjualan_id" name="penjualan_id" required>
+<select class="form-control" id="penjualan" name="penjualan" required>
 <option value="">- Pilih penjualan -</option>
 @foreach($penjualan as $item)
-<option value="{{ $item->penjualan_id }}" @if($item->penjualan_id == $penjualan->penjualan_id) selected @endif>{{ $item->penjualan_nama }}</option>
+<option value="{{ $item->penjualan }}" @if($item->penjualan_id == $penjualan->penjualan_id) selected @endif>{{ $item->penjualan_nama }}</option>
 @endforeach
 </select>
 @error('penjualan_id')
 <small class="form-text text-danger">{{ $message }}</small>
 @enderror
 </div>
-</div>
+</div> --}}
 <div class="form-group row">
 <label class="col-1 control-label col-form-label">User Id</label>
 <div class="col-11">

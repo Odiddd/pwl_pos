@@ -16,7 +16,7 @@ Data yang Anda cari tidak ditemukan.
 <form method="POST" action="{{ url('/barang/'.$barang->barang_id) }}"class="form-horizontal">
 @csrf
 {!! method_field('PUT') !!} 
-<div class="form-group row">
+{{-- <div class="form-group row">
 <label class="col-1 control-label col-form-label">barang</label>
 <div class="col-11">
 <select class="form-control" id="barang_id" name="barang_id" required>
@@ -29,7 +29,7 @@ Data yang Anda cari tidak ditemukan.
 <small class="form-text text-danger">{{ $message }}</small>
 @enderror
 </div>
-</div>
+</div> --}}
 <div class="form-group row">
 <label class="col-1 control-label col-form-label">Barang Kode</label>
 <div class="col-11">

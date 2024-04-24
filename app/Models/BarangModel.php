@@ -25,4 +25,8 @@ class BarangModel extends Model
     {
         return $this->belongsTo(KategoriModel::class, 'kategori_id', 'kategori_id');
     }
+    public function level() // Relationship method with singular form for clarity
+    {
+        return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
+    }
 }

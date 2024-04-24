@@ -21,4 +21,8 @@ class PenjualanModel extends Model
     {
         return $this->belongsTo(UserModel::class, 'user_id', 'user_id');
     }
+    public function level(): BelongsTo
+    {
+        return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
+    }
 }

@@ -6,7 +6,7 @@
 <div class="card-tools"></div>
 </div>
 <div class="card-body">
-@empty($stok)
+@empty($level)
 <div class="alert alert-danger alert-dismissible">
 <h5><i class="icon fas fa-ban"></i> Kesalahan!</h5>
 Data yang Anda cari tidak ditemukan.
@@ -14,28 +14,20 @@ Data yang Anda cari tidak ditemukan.
 @else
 <table class="table table-bordered table-striped table-hover tablesm">
 <tr>
-    <th>ID</th>
-<td>{{ $stok->stok_id }}</td>
+    <th>Level ID</th>
+<td>{{ $level->level_id }}</td>
 </tr>
 <tr>
-<th>Nama Barang</th>
-<td>{{ $stok->barang->barang_nama }}</td>
+<th>Level Kode</th>
+<td>{{ $level->level_kode }}</td>
 </tr>
 <tr>
-<th>Nama User</th>
-<td>{{ $stok->user->nama }}</td>
-</tr>
-<tr>
-<th>Tanggal Stok</th>
-<td>{{ $stok->stok_tanggal }}</td>
-</tr>
-<tr>
-<th>Jumlah Stok</th>
-<td>{{ $stok->stok_jumlah }}</td>
+<th>Level Nama</th>
+<td>{{ $level->level_nama }}</td>
 </tr>
 </table>
 @endempty
-<a href="{{ url('stok') }}" class="btn btn-sm btn-default mt2">Kembali</a>
+<a href="{{ url('level') }}" class="btn btn-sm btn-default mt2">Kembali</a>
 </div>
 </div>
 @endsection

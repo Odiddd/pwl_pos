@@ -63,12 +63,12 @@ class BarangController extends Controller
     }
     public function list(Request $request)
 {
-$barang = BarangModel::select( 'barang_kode', 'barang_nama', 'harga_beli', 'harga_jual');
+$barangs = BarangModel::select('barang_id','barang_kode', 'barang_nama', 'harga_beli', 'harga_jual');
 //Filter data user berdasarkan level id
 if($request->barang_nama){
-    $barang->where('barang_nama', $request->barang_nama);
+    $barangs->where('barang_nama', $request->barang_nama);
 }
-return DataTables::of($barang)
+return DataTables::of($barangs)
 ->addIndexColumn() // menambahkan kolom index / no urut (default namakolom: DT_RowIndex)
 ->addColumn('aksi', function ($barang) { // menambahkan kolom aksi
 $btn = '<a href="'.url('/barang/' . $barang->barang_id).'" class="btn btninfo btn-sm">Detail</a> ';

@@ -63,12 +63,12 @@ class PenjualanController extends Controller
     }
     public function list(Request $request)
 {
-$penjualan = PenjualanModel::select( 'user_id', 'pembeli', 'penjualan_kode', 'penjualan_tanggal');
+$penjualans = PenjualanModel::select( 'penjualan_id','user_id', 'pembeli', 'penjualan_kode', 'penjualan_tanggal');
 //Filter data user berdasarkan level id
 if($request->penjualan_nama){
-    $penjualan->where('penjualan_nama', $request->penjualan_nama);
+    $penjualans->where('penjualan_nama', $request->penjualan_nama);
 }
-return DataTables::of($penjualan)
+return DataTables::of($penjualans)
 ->addIndexColumn() // menambahkan kolom index / no urut (default namakolom: DT_RowIndex)
 ->addColumn('aksi', function ($penjualan) { // menambahkan kolom aksi
 $btn = '<a href="'.url('/penjualan/' . $penjualan->penjualan_id).'" class="btn btninfo btn-sm">Detail</a> ';

@@ -4,7 +4,7 @@
 <div class="card-header">
 <h3 class="card-title">{{ $page->title }}</h3>
 <div class="card-tools">
-<a class="btn btn-sm btn-primary mt-1" href="{{ url('stok/create')}}">Tambah</a>
+<a class="btn btn-sm btn-primary mt-1" href="{{ url('level/create')}}">Tambah</a>
 </div>
 </div>
 <div class="card-body">
@@ -19,20 +19,21 @@
                 <div class="form-group row">
                     <label class="col-1 control-label col-form-label">Filter: </label>
                         <div class="col-3">
-                            <select class="form-control" id="barang_id" name="barang_id" required>
+                            <select class="form-control" id="level_id" name="level_id" required>
                             <option value="">- Semua -</option>
-                            @foreach($barang as $item)
-                            <option value="{{ $item->barang_id }}">{{ $item->barang_nama }}</option>
+                            @foreach($level as $item)
+                            <option value="{{ $item->level_id }}">{{ $item->level_nama }}</option>
                             @endforeach
                         </select>
-                        <small class="form-text text-muted">Nama Barang</small>
+                        <small class="form-text text-muted">Level Pengguna</small>
                     </div>
                 </div>
             </div>
         </div>
-<table class="table table-bordered table-striped table-hover table-sm" id="table_stok">
+<table class="table table-bordered table-striped table-hover table-sm"id="table_level">
 <thead>
-<tr><th>ID</th><th>Jenis Barang</th><th>Nama User</th><th>Tanggal Stok</th><th>Jumlah Stok</th><th>Aksi</th></tr>
+<tr><th>ID</th><th>Level Kode</th><th>Level Nama</th>
+    <th>Aksi</th></tr>
 </thead>
 </table>
 </div>
@@ -43,14 +44,14 @@
 @push('js')
 <script>
 $(document).ready(function() {
-var dataStok = $('#table_stok').DataTable({
+var dataLevel = $('#table_level').DataTable({
 serverSide: true, // serverSide: true, jika ingin menggunakan server side processing
 ajax: {
-"url": "{{ url('stok/list') }}",
+"url": "{{ url('level/list') }}",
 "dataType": "json",
 "type": "POST",
 "data": function(d){
-    d.barang_id = $('#barang_id').val();
+    d.level_id = $('#level_id').val();
 }
 },
 columns: [
@@ -59,23 +60,14 @@ data: "DT_RowIndex", // nomor urut dari laravel datatable addIndexColumn()
 className: "text-center",
 orderable: false,
 searchable: false
-},{
-data: "barang.barang_nama",
+},
+{
+data: "level_kode",
 className: "",
 orderable: true, // orderable: true, jika ingin kolom ini bisa diurutkan
 searchable: true // searchable: true, jika ingin kolom ini bisa dicari
 },{
-data: "user.nama",
-className: "",
-orderable: true, // orderable: true, jika ingin kolom ini bisa diurutkan
-searchable: true // searchable: true, jika ingin kolom ini bisa dicari
-},{
-data: "stok_tanggal",
-className: "",
-orderable: false, // orderable: true, jika ingin kolom ini bisa diurutkan
-searchable: false // searchable: true, jika ingin kolom ini bisa dicari
-},{
-data: "stok_jumlah",
+data: "level_nama",
 className: "",
 orderable: false, // orderable: true, jika ingin kolom ini bisa diurutkan
 searchable: false // searchable: true, jika ingin kolom ini bisa dicari
@@ -87,9 +79,9 @@ searchable: false // searchable: true, jika ingin kolom ini bisa dicari
 }
 ]
 });
-$('#barang_id').on('change',function(){
-    dataStok.ajax.reload();
+$('#level_id').on('change',function(){
+    dataLevel.ajax.reload();
 });
 });
 </script>
-@endpush 
+@endpush
