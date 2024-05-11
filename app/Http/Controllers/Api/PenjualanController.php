@@ -1,20 +1,21 @@
 <?php
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\BarangModel;
+use App\Models\PenjualanModel;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Validator;
 
-class BarangController extends Controller
+class PenjualanController extends Controller
 {
     public function __invoke(Request $request){
         $validator = Validator::make($request->all(), [
-            'kategori_id' => 'required',
-            'barang_kode' => 'required',
-            'barang_nama' => 'required',
-            'harga_beli' => 'required',
-            'harga_jual' => 'required',
+            'user_id' => 'required',
+            'pembeli' => 'required',
+            'penjualan_kode' => 'required',
+            'penjualan_tanggal' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -22,13 +23,12 @@ class BarangController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-        $user = BarangModel::create([
-            'kategori_id' => $request->kategori_id,
-            'barang_kode' => $request->barang_kode,
-            'barang_nama' => $request->barang_nama,
-            'harga_beli' => $request->harga_beli,
-            'harga_jual' => $request->harga_jual,
-            'image' => $request->image
+        $user = PenjualanModel::create([
+            'user_id' => $request->user_id,
+            'pembeli' => $request->pembeli,
+            'penjualan_kode' => $request->penjualan_kode,
+            'penjualan_tanggal' => $request->penjualan_tanggal,
+            'image' => $request->image,
         ]);
         if($user){
             return response()->json([
@@ -41,24 +41,24 @@ class BarangController extends Controller
         ], 409);
     }
     public function index(){
-        return BarangModel::all();
+        return PenjualanModel::all();
     }
 
     public function store(Request $request){
-        $barang = BarangModel::create($request->all());
+        $barang = PenjualanModel::create($request->all());
         return response()->json($barang, 201);
     }
 
     public function show($barang){
-        return BarangModel::find($barang);
+        return PenjualanModel::find($barang);
     }
 
-    public function update(Request $request, BarangModel $barang){
+    public function update(Request $request, PenjualanModel $barang){
         $barang->update($request->all());
-        return BarangModel::find($barang);
+        return PenjualanModel::find($barang);
     }
 
-    public function destroy(BarangModel $barang){
+    public function destroy(PenjualanModel $barang){
         $barang->delete();
         return response()->json([
             'success'=>true,

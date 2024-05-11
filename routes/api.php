@@ -46,6 +46,7 @@ Route::delete('barang/{barang}', [BarangController::class, 'destroy']);
 
 Route::post('/register1', App\Http\Controllers\Api\RegisterController::class)->name('register1');
 Route::post('/barang', App\Http\Controllers\Api\BarangController::class)->name('barang');
+Route::post('/penjualan', App\Http\Controllers\Api\PenjualanController::class)->name('penjualan');
 
 Route::post('/register', App\Http\Controllers\Api\RegisterController::class)->name('register');
 Route::post('/login', App\Http\Controllers\Api\LoginController::class)->name('login');
