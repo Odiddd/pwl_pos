@@ -14,6 +14,7 @@ use App\Http\Controllers\StokController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController as ControllersWelcomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FileRenameController;
 
 /*
 |--------------------------------------------------------------------------
@@ -200,3 +201,6 @@ Route::get('/', function(){
 });
 Route::get('/file-upload', [FileUploadController::class, 'fileUpload'])->name('file-upload');
 Route::post('/file-upload', [FileUploadController::class, 'prosesfileUpload']);
+
+Route::get('/file-upload-rename', [FileRenameController::class, 'fileUploadRename']);
+Route::post('/file-upload-rename', [FileRenameController::class, 'prosesfileUploadRename']);
